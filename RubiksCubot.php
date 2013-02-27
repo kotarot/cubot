@@ -680,16 +680,19 @@ class RubiksCubot {
 	//基本的なAPIを叩く
 	function _setData($url, $value = array()) {
 		$response = $this->consumer->sendRequest($url, $value, 'POST');
-		$response = simplexml_load_string($response->getBody());
+		//$response = simplexml_load_string($response->getBody());
+		$response = json_decode($response->getBody());
 		return $response;
 	}
 	function _getData($url) {
 		$response = $this->consumer->sendRequest($url, array(), 'GET');
-		$response = simplexml_load_string($response->getBody());
+		//$response = simplexml_load_string($response->getBody());
+		$response = json_decode($response->getBody());
 		return $response;
 	}
 	function setUpdate($value) {
-		$url = 'https://twitter.com/statuses/update.xml';
+		//$url = 'https://twitter.com/statuses/update.xml';
+		$url = 'https://api.twitter.com/1.1/statuses/update.json';
 		return $this->_setData($url, $value);
 	}
 	function getFriendsTimeline() {
@@ -697,7 +700,8 @@ class RubiksCubot {
 		return $this->_getData($url);
 	}
 	function getReplies($page = false) {
-		$url = 'http://twitter.com/statuses/replies.xml';
+		//$url = 'http://twitter.com/statuses/replies.xml';
+		$url = 'https://api.twitter.com/1.1/statuses/mentions_timeline.json';
 		if($page) {
 			$url .= '?page=' . intval($page);
 		}

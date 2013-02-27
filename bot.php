@@ -13,9 +13,9 @@
 require_once('./RubiksCubot.php');
 $rc = new RubiksCubot();
 
-if (date('G') === '9' && date('i') == '00') {
+/*if (date('G') === '9' && date('i') == '00') {
 	$response = $rc->autoFollow();
-}
+}*/
 
 // 毎日18時に
 if (date('G') === '18') {
