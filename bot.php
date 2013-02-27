@@ -4,9 +4,9 @@
  * 
  * このファイルをcronで10分おきに実行している。
  * 
- * Author: KT <tera@toki.waseda.jp>
+ * Author: kotarot <kotaro@terabo.net>
  * 
- * Copyright (c) 2010-2012, Rubik's Cubot
+ * Copyright (c) 2010-2013, Rubik's Cubot
  * All rights reserved.
  */
 
