@@ -29,4 +29,3 @@ $scrambleFooter4 = "\nWebサイト: http://wrcc.main.jp/cubot/ #RubiksCubot"; //
 $errorFooterDoublePosted = 'エラー。すでに投稿されています。同じスクランブルに対して二重投稿はできません。'; //二重投稿
 $errorFooterToScrambleStatus = 'エラー。タイムが反映されませんでした。タイムはスクランブルのツイートに対してリプライしてください。'; //公式スクランブル以外へのリプライ
 
-?>

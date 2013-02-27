@@ -13,11 +13,14 @@
 require_once('./RubiksCubot.php');
 $rc = new RubiksCubot();
 
-if(date('G') === '9' && date('i') == '00') $response = $rc->autoFollow();
+if (date('G') === '9' && date('i') == '00') {
+	$response = $rc->autoFollow();
+}
 
 // 毎日18時に
-if(date('G') === '18') $response = $rc->postScramble();
+if (date('G') === '18') {
+	$response = $rc->postScramble();
+}
 
 $response = $rc->reply(10);
 
-?>
