@@ -31,7 +31,7 @@ class RubiksCubot {
 	
 	function __construct() {
 		$dir = getcwd();
-		$path = $dir.'/PEAR';
+		$path = $dir . '/PEAR';
 		set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 		$inc_path = get_include_path();
 		chdir(dirname(__FILE__));
@@ -123,8 +123,11 @@ class RubiksCubot {
 		$_date = date('Ymd');
 		$buffer = file($this->_scramble_fn);
 		$line = explode(',', $buffer[count($buffer) - 1]);
-		if(rtrim($line[2]) === $_date && $line[0] !== '') return true;
-		else return false;
+		if (rtrim($line[2]) === $_date && $line[0] !== '') {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	//スクランブルを作る
@@ -194,7 +197,7 @@ class RubiksCubot {
 			echo $message;
 			$results[] = $message;
 		}
-		if(!empty($this->_repliedReplies)) {
+		if (!empty($this->_repliedReplies)) {
 			$this->saveLog();
 		}
 		return $results;
@@ -352,9 +355,9 @@ class RubiksCubot {
 	
 	//個人記録ファイル処理
 	function updatePersonalData($user_id, $screen_name, $profile_image_url, $scramble_id, $solvedDate, $solvedTime, $aRank, $isDNF) {
-		$pdPath = './data/personal_data/'.$user_id;
-		$dfn = $pdPath.'/data.csv';
-		$rfn = $pdPath.'/records.dat';
+		$pdPath = './data/personal_data/' . $user_id;
+		$dfn = $pdPath . '/data.csv';
+		$rfn = $pdPath . '/records.dat';
 		if(!is_dir($pdPath)) {
 			mkdir($pdPath);
 			$this->myfputcsv($dfn, array("scramble_id", "solved_time", "scramble_date", "solved_date", "comment"));
@@ -427,7 +430,7 @@ class RubiksCubot {
 	//デイリーランキング処理
 	function updateDRank($user_id, $scramble_id, $solvedDate, $solvedTime) {
 		$_date = $this->getScrambleDate($scramble_id);
-		$fn = './data/rankings/d/'.$_date[0].'.csv';
+		$fn = './data/rankings/d/' . $_date[0] . '.csv';
 		if(!file_exists($fn)) {
 			$this->myfputcsv($fn, array("user_id", "time", "scramble_id", "scramble_date", "solved_date"));
 		}
@@ -453,7 +456,7 @@ class RubiksCubot {
 	//ランキング総数を取得
 	function getNumDRank($scramble_id) {
 		$_date = $this->getScrambleDate($scramble_id);
-		$fn = './data/rankings/d/'.$_date[0].'.csv';
+		$fn = './data/rankings/d/' . $_date[0] . '.csv';
 		$buffer = file($fn);
 		$i = -1;
 		foreach($buffer as $line) {
@@ -466,7 +469,7 @@ class RubiksCubot {
 	function updateMRank($user_id, $scramble_id, $solvedDate, $solvedTime) {
 		$_date = $this->getScrambleDate($scramble_id);
 		$_month = mb_substr($_date[0], 0, 6);
-		$rfn = './data/rankings/m/'.$_month.'.csv';
+		$rfn = './data/rankings/m/' . $_month . '.csv';
 		if(!file_exists($rfn)) {
 			$this->myfputcsv($rfn, array("user_id", "time", "scramble_id", "scramble_date", "solved_date"));
 		}
@@ -714,4 +717,3 @@ class RubiksCubot {
 	}
 }
 
-?>
